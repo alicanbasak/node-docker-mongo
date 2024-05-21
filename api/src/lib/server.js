@@ -6,6 +6,7 @@ export const startServer = () => {
   const port = config.port;
 
   try {
+    console.log("Testing docker images");
     httpServer.listen(port, () => {
       console.log(`Server is running on port: ${port}`);
     });
