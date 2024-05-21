@@ -6,8 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "start:dev": "nodemon --env-file=.env.development src/index.js",
-    "docker:build": "docker build -t node-docker-mongo:latest-dev .",
-    "docker:run": "docker run -v ./:/user/src/app node-docker-mongo:latest-dev",
+    "docker:build": "docker build -t my-app/express-api:latest-dev .",
+    "docker:run": "docker run -p 3000:3000 -v ./:/user/src/app --name api my-app/express-api:latest-dev",
     "docker:stop": "docker stop api"
   },
   "author": "Alican Basak",

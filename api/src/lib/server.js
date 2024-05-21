@@ -5,12 +5,18 @@ export const startServer = () => {
   const httpServer = express();
   const port = config.port;
 
+  httpServer.get("/ping", (req, res) => {
+    console.log(`ℹ️ - Ping route: ${req.url} ${Date.now()}`);
+    res.status(200).json({
+      message: "✅ - Pong: test successful",
+    });
+  });
+
   try {
-    console.log("Testing docker images");
     httpServer.listen(port, () => {
-      console.log(`Server is running on port: ${port}`);
+      console.log(`Server running on port ${port}`);
     });
   } catch (err) {
-    throw new Error("Server failed to start", err);
+    throw new Error(err);
   }
 };
