@@ -1,8 +1,9 @@
 import express from "express";
+import config from "./config.js";
 
 export const startServer = () => {
   const httpServer = express();
-  const port = process.env.PORT;
+  const port = config.port;
 
   try {
     httpServer.listen(port, () => {
