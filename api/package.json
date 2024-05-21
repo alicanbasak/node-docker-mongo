@@ -5,7 +5,10 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "start:dev": "nodemon --env-file=.env.development src/index.js"
+    "start:dev": "nodemon --env-file=.env.development src/index.js",
+    "docker:build": "docker build -t node-docker-mongo:latest-dev .",
+    "docker:run": "docker run --name api node-docker-mongo:latest-dev",
+    "docker:stop": "docker stop api"
   },
   "author": "Alican Basak",
   "license": "ISC",
