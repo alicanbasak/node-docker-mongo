@@ -1,0 +1,16 @@
+{
+  "name": "node-docker-mongo",
+  "version": "1.0.0",
+  "description": "A Node.js application using Express and Mongoose, containerized with Docker",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start:dev": "nodemon src/index.js"
+  },
+  "author": "Alican Basak",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
