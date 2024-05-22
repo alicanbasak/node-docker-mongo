@@ -1,16 +1,12 @@
 import express from "express";
 import config from "./config.js";
+import { setupRoutes } from "./setupRoutes.js";
 
 export const startServer = () => {
   const httpServer = express();
   const port = config.port;
 
-  httpServer.get("/ping", (req, res) => {
-    console.log(`ℹ️ - Ping route: ${req.url} ${Date.now()}`);
-    res.status(200).json({
-      message: "✅ - Pong: test successful",
-    });
-  });
+  setupRoutes(httpServer);
 
   try {
     httpServer.listen(port, () => {
