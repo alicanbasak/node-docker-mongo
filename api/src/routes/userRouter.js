@@ -21,12 +21,29 @@ export const userRoutes = router => {
   });
 
   userRouter.put("/:id", (req, res) => {
-    res.status(200).send(`User route with put method and id: ${req.params.id}`);
+    const id = req.params.id;
+    const data = req.body;
+
+    UserService.update(id, data)
+      .then(user => res.status(200).json(user))
+      .catch(err => res.status(500).json({ error: err.message }));
   });
 
   userRouter.delete("/:id", (req, res) => {
-    res
-      .status(200)
-      .send(`User route with delete method and id: ${req.params.id}`);
+    const id = req.params.id;
+
+    UserService.delete(id)
+      .then(user => {
+        if (user) {
+          return res.status(200).json({
+            message: `User with id ${id} deleted successfully`,
+          });
+        } else {
+          return res.status(404).json({
+            message: `User with id ${id} not found`,
+          });
+        }
+      })
+      .catch(err => res.status(500).json({ error: err.message }));
   });
 };

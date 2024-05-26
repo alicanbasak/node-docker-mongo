@@ -20,4 +20,19 @@ const UserSchema = new Schema({
   _tags: Array,
 });
 
+UserSchema.pre("save", function (next) {
+  const now = Date.now();
+  const doc = this;
+  doc.updated = now;
+  if (!doc.created) {
+    doc.created = now;
+  }
+  if (next) next();
+});
+
+UserSchema.pre("findOneAndUpdate", function (next) {
+  this.set({ updated: Date.now() });
+  if (next) next();
+});
+
 export const User = mongoose.model("User", UserSchema);

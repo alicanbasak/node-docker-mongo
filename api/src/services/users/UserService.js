@@ -5,6 +5,27 @@ export const UserService = {
 
   get: id => User.findById(id).select(UserService.internalFields),
   create: data => User.create(data),
-  put: id => console.log(`User route with put method and id: ${id}`),
-  delete: id => console.log(`User route with delete method and id: ${id}`),
+  update: async (id, data) => {
+    try {
+      if (data.name) {
+        Object.entries(data.name).forEach(([key, value]) => {
+          data[`name.${key}`] = value;
+        });
+        delete data.name;
+      }
+
+      return await User.findByIdAndUpdate(
+        id,
+        {
+          $set: data,
+        },
+        {
+          new: true,
+        }
+      ).select(UserService.internalFields);
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
+  delete: id => User.findByIdAndDelete(id),
 };
