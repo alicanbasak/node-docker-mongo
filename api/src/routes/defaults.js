@@ -12,15 +12,6 @@ export const defaultRoutes = router => {
     });
   });
 
-  // Catch all route for the ping (only allow get)
-  defaultRouter.all("/ping", (req, res) => {
-    const code = 405;
-    return res.status(code).json({
-      code,
-      message: `${req.method} method not allowed for route ${req.url}`,
-    });
-  });
-
   // Catch all 404 not found route
   defaultRouter.all("*", (req, res) => {
     const code = 404;
