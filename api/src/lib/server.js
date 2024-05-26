@@ -1,16 +1,19 @@
 import express from "express";
 import config from "./config.js";
-import { setupRoutes } from "./setupRoutes.js";
+import { setupRoutes } from "./initializers/setupRoutes.js";
+import { initializeApp } from "./initializers/index.js";
 
-export const startServer = () => {
-  const httpServer = express();
+export const startServer = async () => {
+  const app = express();
   const port = config.port;
 
-  setupRoutes(httpServer);
+  app.use(express.json());
+
+  await initializeApp(app, config);
 
   try {
-    httpServer.listen(port, () => {
-      console.log(`Server running on port ${port}`);
+    app.listen(port, () => {
+      console.log(`\n ✅ - Server running on port ${port}...`);
     });
   } catch (err) {
     throw new Error(err);
