@@ -142,3 +142,17 @@ networks:
   my-app-network:
     driver: bridge
 ```
+
+## Middleware
+
+### Pre-save Middleware
+
+Automatically sets `created` and `updated` timestamps before saving a document.
+
+### Pre-update Middleware
+
+Automatically sets the `updated` timestamp before updating a document.
+
+## Contribution
+
+Feel free to submit issues and enhancement requests.
