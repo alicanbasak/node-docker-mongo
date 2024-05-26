@@ -15,6 +15,9 @@ This project is a basic API built using Node.js, Express, and MongoDB, configure
 .
 ├── api
 │ ├── src
+│ │ ├── errors
+│ │ │ ├── Errors.js
+│ │ │ ├── index.js
 │ │ ├── lib
 │ │ │ ├── config.js
 │ │ │ ├── initializers
@@ -29,8 +32,8 @@ This project is a basic API built using Node.js, Express, and MongoDB, configure
 │ │ │ ├── index.js
 │ │ │ └── userRouter.js
 │ │ ├── services
-│ │ │ └── users
-│ │ │ └── UserService.js
+│ │ │ ├── users
+│ │ │   └── UserService.js
 │ │ └── index.js
 │ └── Dockerfile
 ├── data
